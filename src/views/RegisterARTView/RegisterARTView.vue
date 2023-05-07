@@ -52,13 +52,75 @@
     <v-stepper-step :complete="e6 > 2" step="2">CONTRATANTE/ LOCAL DE SERVIÇO</v-stepper-step>
    
     <v-stepper-content step="2">
-      <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
+        <v-form v-model="valid">
+    <v-container>
+     
+        <v-row
+          cols="10"
+          md="12"
+          align="center"
+        >       
+          Contrantante*: <v-checkbox></v-checkbox> Pessoa física <v-checkbox></v-checkbox>Pessoa jurídica
+        </v-row>
+
+          <div>
+  
+    <v-text-field label="CPF/CNPJ" outlined dense></v-text-field>
+  </div>
+   <v-row
+          cols="10"
+          md="12"
+          align="center"
+        >       
+          Proprietário*: <v-checkbox></v-checkbox> Pessoa física <v-checkbox></v-checkbox>Pessoa jurídica
+        </v-row>
+       
+  <div>
+   
+    <v-text-field label="CPF/CNPJ" outlined dense></v-text-field>
+  </div>
+      
+        
+        <v-text-field v-model="typecontact" label="N° de contrato*" outlined dense></v-text-field>
+        <v-text-field label="Código de obra pública*" outlined dense></v-text-field>
+          <v-text-field label="Celebrado em*" outlined dense></v-text-field>
+          <v-text-field label="Previsão de Términio*" outlined dense></v-text-field>
+          <v-text-field label="Valor da Obra/Serviço*" outlined dense></v-text-field>
+     <v-row
+          cols="10"
+          md="12"
+          align="center"
+        >       
+          Preencher endereço*: <v-checkbox v-model="isAddress"></v-checkbox>Utilizar Endereço do contratante <v-checkbox></v-checkbox>Utilizar Endereço do proprietário
+          <v-checkbox></v-checkbox>Utilizar outro endereço
+        </v-row>
+   <v-col v-if="isAddress">
+
+    <v-text-field v-model="address.CEP" label="CEP*" outlined dense></v-text-field>
+        <v-text-field   v-model="address.type" label="Tipo*" outlined dense></v-text-field>
+         <v-text-field   v-model="address.uf"  label="UF" outlined dense></v-text-field>
+          <v-text-field  v-model="address.city"  label="Cidade*" outlined dense></v-text-field>
+          <v-text-field  v-model="address.neigh"  label="Bairro*" outlined dense></v-text-field>
+        
+            <v-text-field  v-model="address.phone"  label="Telefone*" outlined dense></v-text-field>
+
+            <v-col  cols="10"
+          md="12"
+          align="left">Tipo de coordenada:   <v-text-field label="Longitude*" outlined dense></v-text-field> <v-text-field label="Latitude*" outlined dense></v-text-field> </v-col>
+    
+   </v-col>
+        
+       </v-container>
+ 
+   
+  </v-form>
+    
       <v-btn flat>Voltar</v-btn>
       <v-btn color="primary" @click="e6 = 3">Continuar</v-btn>
     
     </v-stepper-content>
 
-    <v-stepper-step :complete="e6 > 3" step="3">Select an ad format and name ad unit</v-stepper-step>
+    <v-stepper-step :complete="e6 > 3" step="3">FINALIDADE</v-stepper-step>
 
     <v-stepper-content step="3">
       <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
@@ -66,7 +128,7 @@
       <v-btn flat>Voltar</v-btn>
     </v-stepper-content>
 
-    <v-stepper-step step="4">View setup instructions</v-stepper-step>
+    <v-stepper-step step="4">PARTICIPAÇÃO</v-stepper-step>
     <v-stepper-content step="4">
       <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
       <v-btn color="primary" @click="e6 = 1">Continue</v-btn>
@@ -82,6 +144,18 @@
     data () {
       
       return {
+        isAddress:false,
+        address:{
+            CEP:'60330-310',
+             type:'Residência',
+             number:'561',
+             complement:'nha',
+             street:'Rua  A',
+             neigh:'Fátima',
+             phone:'(85) 99260-5068',
+             uf:'CE',
+             city:'Fortaleza'
+        },
         artModel:'',
         e6: 1
       }
