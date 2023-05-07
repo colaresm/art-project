@@ -1,4 +1,4 @@
-# canon-frontend
+# -frontend
 
 ## Project setup
 ```
