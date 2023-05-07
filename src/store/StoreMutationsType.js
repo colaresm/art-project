@@ -1,0 +1,5 @@
+export default {
+    BREADCRUMB_SET_PATH: 'BREADCRUMB_SET_PATH',
+    SET_TOKEN: 'SET_TOKEN',
+    SET_USER: 'SET_USER'
+};
